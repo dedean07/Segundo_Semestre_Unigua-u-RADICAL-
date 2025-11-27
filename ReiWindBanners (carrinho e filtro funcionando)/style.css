@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
+header{
+    box-shadow: 2px 2px 20px 1px rgba(139, 139, 139, 0.473);
+}
+
+h2{
+  font-family: "Commissioner", sans-serif;
+    font-weight: 900;
+    font-style:  Black;  
+}
+
+#carrinho{
+    width: 28px;
+    height: 28px;
+    margin-top: -15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#carrinho:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos do Sidebar do Carrinho */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    font-family: "Commissioner", sans-serif;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+.cart-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.cart-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #4285f4;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-details h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.product-price {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.qty-btn:hover {
+    background: #f0f0f0;
+}
+
+.quantity {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+.remove-item:hover {
+    color: #ff4444;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: #f8f9fa;
+}
+
+.subtotal {
+    margin-bottom: 15px;
+}
+
+.subtotal p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: "Commissioner", sans-serif;
+    transition: background 0.2s ease;
+}
+
+.checkout-btn:hover {
+    background: #3367d6;
+}
+
+/* Responsividade do sidebar */
+@media (max-width: 480px) {
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+#pesquisa{
+    border: 1px solid black;
+    border-radius: 30px;
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    font-style: medium;
+    padding-right: 2.5rem;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+#lupa{
+    position: absolute;
+    margin-left: 93%;
+    width: 18px;
+    height: 18px;
+    margin-top: 3%;
+}
+
+#funil{
+    width: 28px;
+    height: 28px;
+    margin-right: 15px;
+    margin-top: 9px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#funil:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos do Menu de Filtros */
+.filter-menu {
+    width: 280px;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: white;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.filter-section {
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-title {
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 14px;
+    color: #495057;
+    margin: 0;
+    padding: 5px 0;
+    transition: color 0.2s ease;
+}
+
+.filter-option:hover {
+    color: #4285f4;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+    display: none;
+}
+
+/* Checkboxes customizados */
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #dee2e6;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filter-option input[type="checkbox"]:checked + .checkmark {
+    background-color: #4285f4;
+    border-color: #4285f4;
+}
+
+.filter-option input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Radio buttons customizados */
+.radiomark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #dee2e6;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filter-option input[type="radio"]:checked + .radiomark {
+    border-color: #4285f4;
+}
+
+.filter-option input[type="radio"]:checked + .radiomark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: #4285f4;
+    border-radius: 50%;
+}
+
+/* Botões de ação */
+.filter-actions {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    background-color: #f8f9fa;
+    border-radius: 0 0 12px 12px;
+}
+
+.btn-clear,
+.btn-apply {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-clear {
+    background-color: #e9ecef;
+    color: #6c757d;
+}
+
+.btn-clear:hover {
+    background-color: #dee2e6;
+}
+
+.btn-apply {
+    background-color: #4285f4;
+    color: white;
+}
+
+.btn-apply:hover {
+    background-color: #3367d6;
+}
+
+/* Scrollbar customizada */
+.filter-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.filter-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.filter-menu::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.filter-menu::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.img_insta {
+    align-items: end;
+
+}
+
+#carouselExampleRide{
+    margin-top: 35px;
+    margin-bottom: 35px;
+    width: 90%;
+    height: 5%;
+}
+
+.dropdown-menu {
+    margin-top: 10px !important;
+    margin-left: -15px !important;
+}

@@ -1,0 +1,26 @@
+.produtos {
+    display: flex;
+    justify-content: space-around;
+    height: 70%;   
+}
+
+.produto1 {
+    display: flex;
+    margin-right: 500;
+    height: 70%;
+}
+
+.borda {
+    border-radius: 40px;
+    width: 78%;
+}
+
+.divProduto{
+    transition: transform 0.3s ease-out;
+    cursor: pointer;
+    margin-top: 1%;
+}
+
+.divProduto:hover{
+    transform: scale(1.1);
+}
