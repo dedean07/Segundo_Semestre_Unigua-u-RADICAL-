@@ -1,0 +1,714 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
+/*Começo cabeçalho*/
+header{
+    box-shadow: 2px 2px 20px 1px rgba(139, 139, 139, 0.473);
+}
+
+/*Logotipo*/
+.logo{
+    display: flex;
+    justify-content: start;
+    position: absolute;
+    width: 120px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo img{
+    width: 120px;
+    margin-left: 12px;
+}
+
+/*Fim Logotipo*/
+
+#carrinho{
+    width: 28px;
+    height: 28px;
+    margin-top: -15px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#carrinho:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos do Sidebar do Carrinho */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    font-family: "Commissioner", sans-serif;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+.cart-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.cart-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.product-image {
+    width: 82px;
+    height: 82px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #4285f4;
+}
+
+.product-details {
+    flex: 1;
+    scale: 1.2;
+    margin-left: 40px;
+}
+
+.product-details h4 {
+    font-family: "Commissioner", sans-serif;
+    margin: 0 0 5px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.product-price {
+    font-family: "Commissioner", sans-serif;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 300;
+    color: #333;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid black;
+    border-radius: 7px;
+    width: 35%;
+    scale: 0.85;
+    margin-left: -4px;
+}
+
+.qty-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 2px;
+    outline: none;
+}
+
+.quantity {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    scale: 0.7;
+    margin-top: -8px;
+}
+
+.remove-item:hover {
+    color: #ff4444;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: #f8f9fa;
+}
+
+.subtotal {
+    margin-bottom: 15px;
+}
+
+.subtotal p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: "Commissioner", sans-serif;
+    transition: background 0.2s ease;
+}
+
+.checkout-btn:hover {
+    background: #3367d6;
+}
+
+/* Responsividade do sidebar */
+@media (max-width: 480px) {
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+#pesquisa{
+    border: 1px solid black;
+    border-radius: 30px;
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    font-style: medium;
+    padding-right: 2.5rem;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+
+#lupa{
+    position: absolute;
+    margin-left: 93%;
+    width: 18px;
+    height: 18px;
+    margin-top: 3%;
+}
+
+#funil{
+    width: 28px;
+    height: 28px;
+    margin-right: 15px;
+    margin-top: 9px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#funil:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos do Menu de Filtros */
+.filter-menu {
+    width: 280px;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: white;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.filter-section {
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-title {
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 14px;
+    color: #495057;
+    margin: 0;
+    padding: 5px 0;
+    transition: color 0.2s ease;
+}
+
+.filter-option:hover {
+    color: #4285f4;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+    display: none;
+}
+
+/* Checkboxes customizados */
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #dee2e6;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filter-option input[type="checkbox"]:checked + .checkmark {
+    background-color: #4285f4;
+    border-color: #4285f4;
+}
+
+.filter-option input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Radio buttons customizados */
+.radiomark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #dee2e6;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filter-option input[type="radio"]:checked + .radiomark {
+    border-color: #4285f4;
+}
+
+.filter-option input[type="radio"]:checked + .radiomark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: #4285f4;
+    border-radius: 50%;
+}
+
+/* Botões de ação */
+.filter-actions {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    background-color: #f8f9fa;
+    border-radius: 0 0 12px 12px;
+}
+
+.btn-clear,
+.btn-apply {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-clear {
+    background-color: #e9ecef;
+    color: #6c757d;
+}
+
+.btn-clear:hover {
+    background-color: #dee2e6;
+}
+
+.btn-apply {
+    background-color: #4285f4;
+    color: white;
+}
+
+.btn-apply:hover {
+    background-color: #3367d6;
+}
+
+/* Scrollbar customizada */
+.filter-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.filter-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.filter-menu::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.filter-menu::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.img_insta {
+    align-items: end;
+
+}
+
+.dropdown-menu {
+    margin-top: 10px !important;
+    margin-left: -15px !important;
+}
+/*Fim cabeçalho*/
+
+/*Começo rodapé*/
+.rodape{
+    display: flex;
+    background-image: url("fundo\ produtos.png");
+    background-size: cover;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-top: 10%;
+}
+
+.contatosRodape{
+    color: white;
+    font-family: "Commissioner", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    margin-left: 4%;  
+    margin-top: 1%;
+}
+
+.endereco{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.linhaSup{
+    flex-basis: auto;
+    margin-left: 10px;
+    margin-bottom: 25px;
+}
+
+.linhaSupEndereco{
+    flex-basis: auto;
+    margin-left: 10px;
+}
+
+.linhaInf{
+    flex-basis: 100%;
+    margin-left: 50px;
+}
+
+#mapaRodape{
+    width: 24%;
+    height: 10%;
+    margin-right: 8%;
+}
+/*Fim do rodapé*/
+
+/*Começo protudo*/
+.produto{
+    display: flex;
+    margin-top: 4%;
+    margin-left: 6%;
+    justify-content: center;
+}
+
+.main{
+    box-shadow: 5px 5px 10px 5px rgba(139, 139, 139, 0.473);
+    margin-left: 20px;
+    width: 20%;
+}
+
+.imagemProduto{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 50px;
+    height: 60px;
+    gap: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.imagemProduto img:hover{
+    transform: scale(1.1);
+}
+
+.produto img{
+    border-radius: 15px;
+}
+
+.tituloProduto{
+    margin-left: 10%;
+}
+
+.tituloProduto h4{
+    font-family: "Commissioner", sans-serif;
+    font-weight: 600;
+    font-size: 45px;
+    white-space: nowrap; 
+}
+
+.precoProduto{
+    font-family: "Commissioner", sans-serif;
+    font-weight: 700;
+    font-size: 37px;
+    white-space: nowrap;
+    margin-top: 25px;
+}
+
+.bi{
+    width: 33px;
+    height: 33px;
+}
+
+#cinco{
+    font-family: "Commissioner", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    white-space: nowrap;
+    
+}
+
+#cem{
+    white-space: nowrap;
+    font-family: "Commissioner", sans-serif;
+    font-weight: 500;
+    
+}
+
+.estrelas{
+    display: flex;
+    gap: 10px
+}
+
+.linhaEstrelas{
+    display: flex;
+    align-items: center;    
+    white-space: nowrap;
+    margin-top: -6px;
+}
+
+.linhaEstrelas span{
+    margin-left: 8px;
+}
+
+.descricao h1{
+    font-family: "Commissioner", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.descricao p{
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    font-size: 28px;
+}
+
+#teste1{
+    font-family: "Commissioner", sans-serif;
+    font-weight: 400;
+    color: white;
+    outline: none;
+    background-color: #5170FF;
+    border: none;
+    border-radius: 7px;
+    scale: 1.4;
+    transition: transform 0.2s ease-in-out;
+    margin-left: 9%;
+}
+
+#teste1:hover{
+    transform: scale(1.05);
+}
+
+.quantidadeProduto{
+    display: flex;
+    align-items: center;
+}
+
+#imputQuantidade{
+    border: none; 
+    background-color: transparent; 
+    padding: 0;
+    outline: none;
+    font-family: "Commissioner", sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+    padding-right: 0 !important;
+}
+
+input[type=number]{
+    -moz-appearance: textfield !important; 
+    appearance: textfield !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    width: 60px;
+    text-align: center;
+    caret-color: transparent;
+}
+
+.caixaQuantidade{
+    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 35px;
+}
+
+.caixaQuantidade button{
+    outline: none;
+    border: none;
+    background: none;
+    border: none;
+    scale: 2;
+    margin-bottom: 7px;
+    margin-left: 9px;
+    margin-right: 9px;
+}
+/*Fim produto*/
+
+.avaliacao1{
+    font-family: "Commissioner", sans-serif;
+    position: absolute;
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 10%;
+}
+
+.avaliacao2{
+    font-family: "Commissioner", sans-serif;
+    position: absolute;
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 16%;
+    margin-top: -5%;
+}
+
+.avaliacao3{
+    font-family: "Commissioner", sans-serif;
+    position: absolute;
+    font-size: 30px;
+    font-weight: 300;
+    margin-left: 16%;
+    margin-top: -3%;
+}
+
+.linha{
+    width: 70%;
+    height: 1px;
+    background-color: black;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+
+.comentario{
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+    margin-left: 10%;
+    margin-top: 4%;
+}
