@@ -1,25 +1,3 @@
-const produtos = document.querySelectorAll(".divProduto");
-
-function redirecionaProdutos(){
-        window.location.href = "Page3.html"
-}
-
-if(produtos.length > 0){
-    produtos.forEach(div => {
-        div.addEventListener("click", redirecionaProdutos);
-    });
-}
-
-/*Redireciona logotipo*/ 
-const logotipo = document.getElementById("logotipoCabecalho");
-
-function redirecionaAi(){
-    window.location.href = "index.html";
-}
-
-logotipo.addEventListener("click", redirecionaAi);
-/*Fim redireciona logotipo*/
-
 // Navegação para outras páginas
 // windows.location.href = "Page1.html";
 // windows.location.href = "Page2.html";
@@ -130,6 +108,7 @@ function updateCartDisplay() {
                         <button class="qty-btn" onclick="updateQuantity('${itemId}', +1)">+</button>
                     </div>
                 </div>
+                
                 <svg xmlns="http://www.w3.org/2000/svg"  onclick="removeItem('${itemId}')" fill="currentColor" class="bi remove-item bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
@@ -261,3 +240,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+/*Trocar imagem produto*/
+const mainImagem = document.getElementById("mainImage");
+const miniatura = document.querySelectorAll(".imagemProdutoClass");
+
+function trocarImagem(event) {
+    mainImagem.src = event.currentTarget.src;
+  } 
+
+if (miniatura.length > 0){
+    miniatura.forEach(img => {
+        img.addEventListener("mouseenter", trocarImagem)
+    });
+}
+
+
+/* Adiciona e remove itens da caixinha do bagui*/
+const adiciona = document.getElementById("adicionaProduto");
+const remove = document.getElementById("removeProduto");
+let quantidade = document.getElementById("imputQuantidade").value;
+
+function  adicionaBagui(){
+	if (quantidade < 999){
+		document.getElementById("imputQuantidade").value++;
+		quantidade = document.getElementById("imputQuantidade").value;
+	}
+}
+
+function removeBagui(){
+    if (quantidade >= 2){
+        document.getElementById("imputQuantidade").value--;
+        quantidade = document.getElementById("imputQuantidade").value;
+    }
+}
+
+adiciona.addEventListener("click", adicionaBagui);
+remove.addEventListener("click", removeBagui);
+
+/*Redireciona logotipo*/
+const logotipo = document.getElementById("logotipoCabecalho");
+
+function redirecionaAi(){
+    window.location.href = "index.html";
+}
+
+logotipo.addEventListener("click", redirecionaAi);
+/*Fim redireciona logotipo*/
